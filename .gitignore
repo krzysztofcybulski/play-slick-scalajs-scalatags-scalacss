@@ -1,0 +1,14 @@
+backend/logs/
+backend/target/
+
+frontend/target/
+
+shared/.js/
+shared/.jvm/
+
+project/project/
+project/target/
+
+target/
+
+.idea/
