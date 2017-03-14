@@ -4,7 +4,7 @@ import play.api.mvc._
 import javax.inject.Inject
 
 import play.api.http.ContentTypes
-import play.api.i18n.{I18nSupport, Messages, MessagesApi}
+import play.api.i18n._
 import views.{IndexView, MainView}
 import shared.SharedMessages
 

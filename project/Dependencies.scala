@@ -3,12 +3,12 @@ import sbt._
 
 object Dependencies {
 
-  val scalatagsVersion          = "0.6.2"
-  val scalaCSSVersion           = "0.5.1"
+  val scalatagsVersion          = "0.6.3"
+  val scalaCSSVersion           = "0.5.3-RC1"
 
-  val playSlickVersion          = "1.1.0"
-  val mysqlJavaConnectorVersion = "5.1.34"
-  val scalaCSSScalaTagsVersion  = "0.5.1"
+  val playSlickVersion          = "2.0.2"
+  val mysqlJavaConnectorVersion = "6.0.6"
+  val scalaCSSScalaTagsVersion  = "0.5.3-RC1"
 
   val scalaJSdomVersion         = "0.9.1"
 
