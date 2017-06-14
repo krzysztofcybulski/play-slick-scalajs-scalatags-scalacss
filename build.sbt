@@ -19,18 +19,16 @@ lazy val backend = (project in file("backend")).settings(
 
 lazy val frontend = (project in file("frontend")).settings(
   scalaVersion := versionOfScala,
-  persistLauncher := true,
-  persistLauncher in Test := false,
   unmanagedSourceDirectories in Compile := Seq((scalaSource in Compile).value),
   libraryDependencies ++= frontendDeps.value
-).enablePlugins(ScalaJSPlugin, ScalaJSPlay)
+).enablePlugins(ScalaJSPlugin, ScalaJSWeb)
   .dependsOn(sharedJs)
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
   .settings(
     scalaVersion := versionOfScala,
     libraryDependencies ++= sharedDeps.value
-  ).jsConfigure(_ enablePlugins ScalaJSPlay)
+  ).jsConfigure(_ enablePlugins ScalaJSWeb)
 
 lazy val sharedJvm = shared.jvm
 lazy val sharedJs = shared.js
