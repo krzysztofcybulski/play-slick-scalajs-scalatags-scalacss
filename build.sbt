@@ -3,22 +3,24 @@ organization  := "foo.playscalajs"
 version       := "0.1-SNAPSHOT"
 
 import sbt.Project.projectToRef
-import Dependencies.{frontendDeps, _}
 import sbt.Keys.libraryDependencies
 
-lazy val clients = Seq(frontend)
-lazy val versionOfScala = "2.11.8"
+import Dependencies._
+
+lazy val versionOfScala = "2.11.11"
 
 lazy val backend = (project in file("backend")).settings(
   scalaVersion := versionOfScala,
-  scalaJSProjects := clients,
+  scalaJSProjects := Seq(frontend),
+  pipelineStages in Assets := Seq(scalaJSPipeline),
+  compile in Compile := ((compile in Compile) dependsOn scalaJSPipeline).value,
   libraryDependencies ++= backendDeps.value
 ).enablePlugins(PlayScala)
-  .aggregate(clients.map(projectToRef): _*)
   .dependsOn(sharedJvm)
 
 lazy val frontend = (project in file("frontend")).settings(
   scalaVersion := versionOfScala,
+  scalaJSUseMainModuleInitializer := true,
   unmanagedSourceDirectories in Compile := Seq((scalaSource in Compile).value),
   libraryDependencies ++= frontendDeps.value
 ).enablePlugins(ScalaJSPlugin, ScalaJSWeb)

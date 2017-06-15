@@ -3,6 +3,8 @@ import sbt._
 
 object Dependencies {
 
+  val scalaJSscriptsVersion		= "1.0.0"
+
   val scalatagsVersion          = "0.6.3"
   val scalaCSSVersion           = "0.5.3-RC1"
 
@@ -13,6 +15,7 @@ object Dependencies {
   val scalaJSdomVersion         = "0.9.1"
 
   val backendDeps =  Def.setting(Seq[ModuleID](
+    "com.vmunier" %% "scalajs-scripts" % scalaJSscriptsVersion,
     "mysql"   % "mysql-connector-java"      % mysqlJavaConnectorVersion,
     "com.typesafe.play" %% "play-slick"     % playSlickVersion,
     "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
